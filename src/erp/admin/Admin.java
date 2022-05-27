@@ -143,7 +143,7 @@ public class Admin extends JFrame {
 		btnNewButton_2.setBounds(0, 289, 302, 65);
 		panel.add(btnNewButton_2);
 		
-		JButton btnNewButton_3 = new JButton("Add Admin");
+		JButton btnNewButton_3 = new JButton("Search Student");
 		btnNewButton_3.setFont(new Font("Poppins Medium", Font.PLAIN, 16));
 		btnNewButton_3.setForeground(new Color(255, 255, 255));
 		btnNewButton_3.setBackground(new Color(23, 35, 51));
@@ -237,12 +237,12 @@ public class Admin extends JFrame {
 		panel_9.setBounds(10, 52, 709, 235);
 		panel_5.add(panel_9);
 		
-		JButton btnNewButton_5 = new JButton("New button");
+		JButton btnNewButton_5 = new JButton("Add");
 		btnNewButton_5.setFont(new Font("Poppins Medium", Font.PLAIN, 16));
 		btnNewButton_5.setBounds(83, 441, 141, 48);
 		panel_5.add(btnNewButton_5);
 		
-		JButton btnNewButton_5_1 = new JButton("New button");
+		JButton btnNewButton_5_1 = new JButton("Delete");
 		btnNewButton_5_1.setFont(new Font("Poppins Medium", Font.PLAIN, 16));
 		btnNewButton_5_1.setBounds(548, 441, 141, 48);
 		panel_5.add(btnNewButton_5_1);
@@ -277,45 +277,50 @@ public class Admin extends JFrame {
 		textField_9.setBounds(339, 384, 129, 30);
 		panel_5.add(textField_9);
 		
-		JLabel lblNewLabel_8 = new JLabel("New label");
+		JLabel lblNewLabel_8 = new JLabel(" Name  : ");
 		lblNewLabel_8.setFont(new Font("Poppins Medium", Font.PLAIN, 15));
 		lblNewLabel_8.setBounds(10, 298, 75, 31);
 		panel_5.add(lblNewLabel_8);
 		
-		JLabel lblNewLabel_8_1 = new JLabel("New label");
+		JLabel lblNewLabel_8_1 = new JLabel("Roll No.  : ");
 		lblNewLabel_8_1.setFont(new Font("Poppins Medium", Font.PLAIN, 15));
 		lblNewLabel_8_1.setBounds(10, 339, 75, 31);
 		panel_5.add(lblNewLabel_8_1);
 		
-		JLabel lblNewLabel_8_2 = new JLabel("New label");
+		JLabel lblNewLabel_8_2 = new JLabel("Phone No. : ");
 		lblNewLabel_8_2.setFont(new Font("Poppins Medium", Font.PLAIN, 15));
-		lblNewLabel_8_2.setBounds(10, 384, 75, 31);
+		lblNewLabel_8_2.setBounds(10, 384, 83, 31);
 		panel_5.add(lblNewLabel_8_2);
 		
-		JLabel lblNewLabel_8_3 = new JLabel("New label");
+		JLabel lblNewLabel_8_3 = new JLabel("Email ID  :");
 		lblNewLabel_8_3.setFont(new Font("Poppins Medium", Font.PLAIN, 15));
 		lblNewLabel_8_3.setBounds(254, 298, 75, 31);
 		panel_5.add(lblNewLabel_8_3);
 		
-		JLabel lblNewLabel_8_4 = new JLabel("New label");
+		JLabel lblNewLabel_8_4 = new JLabel("Division  :");
 		lblNewLabel_8_4.setFont(new Font("Poppins Medium", Font.PLAIN, 15));
 		lblNewLabel_8_4.setBounds(254, 339, 75, 31);
 		panel_5.add(lblNewLabel_8_4);
 		
-		JLabel lblNewLabel_8_5 = new JLabel("New label");
+		JLabel lblNewLabel_8_5 = new JLabel("Course  :");
 		lblNewLabel_8_5.setFont(new Font("Poppins Medium", Font.PLAIN, 15));
 		lblNewLabel_8_5.setBounds(254, 383, 75, 31);
 		panel_5.add(lblNewLabel_8_5);
 		
 		textField_10 = new JTextField();
 		textField_10.setColumns(10);
-		textField_10.setBounds(550, 389, 129, 30);
+		textField_10.setBounds(622, 384, 83, 30);
 		panel_5.add(textField_10);
 		
-		JButton btnNewButton_5_1_1 = new JButton("New button");
+		JButton btnNewButton_5_1_1 = new JButton("Update");
 		btnNewButton_5_1_1.setFont(new Font("Poppins Medium", Font.PLAIN, 16));
 		btnNewButton_5_1_1.setBounds(327, 441, 141, 48);
 		panel_5.add(btnNewButton_5_1_1);
+		
+		JLabel lblNewLabel_8_1_1 = new JLabel("Roll No.  : ");
+		lblNewLabel_8_1_1.setFont(new Font("Dialog", Font.PLAIN, 15));
+		lblNewLabel_8_1_1.setBounds(548, 384, 75, 31);
+		panel_5.add(lblNewLabel_8_1_1);
 		
 		JPanel panel_6 = new JPanel();
 		panel_6.setBackground(Color.WHITE);
@@ -363,7 +368,7 @@ public class Admin extends JFrame {
 		panel_3.add(panel_7, "addadmin");
 		panel_7.setLayout(null);
 		
-		JLabel lblNewLabel_6 = new JLabel("Add Admin");
+		JLabel lblNewLabel_6 = new JLabel("Search Student");
 		lblNewLabel_6.setBounds(0, 0, 729, 500);
 		lblNewLabel_6.setFont(new Font("Poppins SemiBold", Font.PLAIN, 20));
 		lblNewLabel_6.setHorizontalAlignment(SwingConstants.CENTER);
@@ -395,7 +400,7 @@ public class Admin extends JFrame {
 		textField_16.setBounds(363, 223, 150, 34);
 		panel_7.add(textField_16);
 		
-		JLabel lblNewLabel_10 = new JLabel("New label");
+		JLabel lblNewLabel_10 = new JLabel("Roll No.");
 		lblNewLabel_10.setFont(new Font("Poppins Medium", Font.PLAIN, 15));
 		lblNewLabel_10.setBounds(210, 73, 135, 34);
 		panel_7.add(lblNewLabel_10);
