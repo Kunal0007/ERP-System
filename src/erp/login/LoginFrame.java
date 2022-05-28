@@ -1,5 +1,7 @@
 package erp.login;
 
+import java.sql.*;
+
 import java.awt.Color;
 
 
@@ -27,9 +29,11 @@ import javax.swing.border.LineBorder;
 import javax.swing.border.MatteBorder;
 
 import erp.admin.Admin;
+import erp.database.DataBaseConnection;
 import erp.student.Student;
 
 import java.awt.Font;
+import java.awt.HeadlessException;
 import java.awt.SystemColor;
 import java.awt.Canvas;
 import java.awt.Cursor;
@@ -37,7 +41,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 @SuppressWarnings("serial")
-public class LoginFrame extends JFrame implements ActionListener {
+public class LoginFrame extends JFrame  {
 
 	private JPanel contentPane;
 	private JTextField txtErpPortal;
@@ -66,8 +70,14 @@ public class LoginFrame extends JFrame implements ActionListener {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					LoginFrame frame = new LoginFrame();
-					frame.setVisible(true);
+					if(DataBaseConnection.checkconnection()) {
+						LoginFrame frame = new LoginFrame();
+						frame.setVisible(true);
+					}
+					else
+					{
+						JOptionPane.showMessageDialog(null, "Start the Database Server first","Error",JOptionPane.ERROR_MESSAGE);
+					}
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -130,7 +140,6 @@ public class LoginFrame extends JFrame implements ActionListener {
 		btnNewButton.setBorderPainted(false);
 		btnNewButton.setFont(new Font("Poppins SemiBold", Font.PLAIN, 20));
 		btnNewButton.setBounds(10, 305, 310, 52);
-		btnNewButton.addActionListener(this);
 		panel.add(btnNewButton);
 		
 		lblNewLabel_1 = new JLabel("UserID");
@@ -184,7 +193,6 @@ public class LoginFrame extends JFrame implements ActionListener {
 		btnNewButton_1.setBackground(new Color(34, 167, 240));
 		btnNewButton_1.setFont(new Font("Poppins SemiBold", Font.PLAIN, 20));
 		btnNewButton_1.setBounds(10, 305, 310, 52);
-		btnNewButton_1.addActionListener(this);
 		panel_2.add(btnNewButton_1);
 		
 		lblNewLabel_5 = new JLabel("Password");
@@ -220,51 +228,107 @@ public class LoginFrame extends JFrame implements ActionListener {
 		lblNewLabel_6.setBounds(0, -2, 1031, 613);
 		contentPane.add(lblNewLabel_6);
 		
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {  
+//	            
+					ResultSet rs = checkCredentials("Admin");
+				
+					try {
+						if(rs.next()) {
+							//create instance of the NewPage  
+						    Admin admin = new Admin(rs.getString(1));   
+						    //make page visible to the user  
+						    admin.setVisible(true);  
+						      
+						    //create a welcome label and set it to the new page  
+				            JLabel wel_label = new JLabel("Welcome: "+rs.getString(1));  
+				            admin.getContentPane().add(wel_label); 
+						}
+						else
+						{
+						    JOptionPane.showMessageDialog(null, "Incorrect user-id or password..Try Again with correct detail");
+						}
+					} catch (HeadlessException | SQLException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+		             
+			}
+		});
+		
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {  
+//	            
+					ResultSet rs = checkCredentials("Student");
+				
+					try {
+						if(rs.next()) {
+							//create instance of the NewPage  
+						    Student student = new Student(rs.getString(1), rs.getString(2));   
+						    //make page visible to the user  
+						    student.setVisible(true);  
+						      
+						    //create a welcome label and set it to the new page  
+				            JLabel wel_label = new JLabel("Welcome: "+rs.getString(1));  
+				            student.getContentPane().add(wel_label); 
+						}
+						else
+						{
+						    JOptionPane.showMessageDialog(null, "Incorrect user-id or password..Try Again with correct detail");
+						}
+					} catch (HeadlessException | SQLException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+		             
+			}
+		});
 		
 
 		
 	}
 
-	@SuppressWarnings("deprecation")
-	@Override
-	public void actionPerformed(ActionEvent e) {
+	public ResultSet checkCredentials(String User) {
 		// TODO Auto-generated method stub
-		String adminid = textField.getText();        //get user entered username from the textField  
-        String adminpass = passwordField.getText();        //get user entered pasword from the passwordField 
-        
-        String studentid = textField_1.getText();        //get user entered username from the textField_1  
-        String studentpass = passwordField_1.getText();        //get user entered pasword from the passwordField_1 
-          
-        //check whether the credentials are authentic or not  
-        if (adminid.equals("t") && adminpass.equals("t")) {  //if authentic, navigate user to a new page  
-              
-            //create instance of the NewPage  
-            Admin admin = new Admin();  
-            admin.setname(adminid);  
-            //make page visible to the user  
-            admin.setVisible(true);  
-              
-            //create a welcome label and set it to the new page  
-            JLabel wel_label = new JLabel("Welcome: "+adminid);  
-            admin.getContentPane().add(wel_label);  
-        }
-        else if (studentid.equals("i") && studentpass.equals("i")) {  //if authentic, navigate user to a new page  
-            
-            //create instance of the NewPage  
-            Student student = new Student();  
-              
-            //make page visible to the user  
-            student.setVisible(true);  
-              
-            //create a welcome label and set it to the new page  
-            JLabel wel_label = new JLabel("Welcome: "+studentid);  
-            student.getContentPane().add(wel_label);  
-        }  
-        else{  
-            //show error message  
-            System.out.println("Please enter valid username and password");  
-        }  
+		Connection con = DataBaseConnection.getConnection();
+		if(User == "Admin") {
+			String adminid = textField.getText();        //get user entered username from the textField  
+	        char[] Str = passwordField.getPassword();        //get user entered pasword from the passwordField 
+	        String adminpass = new String(Str);
+	        
+	        try {
+				PreparedStatement ps = con.prepareStatement("select Name from Admin where User_Id=? and Password=?");
+				ps.setString(1, adminid);
+				ps.setString(2, adminpass);
+				
+				ResultSet rs = ps.executeQuery();
+				
+				return rs;
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		else if (User == "Student") {
+			String studentid = textField_1.getText();        //get user entered username from the textField  
+	        char[] Str = passwordField_1.getPassword();        //get user entered pasword from the passwordField 
+	        String studentpass = new String(Str);
+	        
+	        try {
+				PreparedStatement ps = con.prepareStatement("select Name, Roll_No from Student where Student_Id=? and Password=?");
+				ps.setString(1, studentid);
+				ps.setString(2, studentpass);
+				
+				ResultSet rs = ps.executeQuery();
+				
+				return rs;
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+		return null;
 	}
-	
 	
 }
