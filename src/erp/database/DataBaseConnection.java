@@ -5,7 +5,7 @@ import java.sql.*;
 public class DataBaseConnection {
 	
 	static Connection con=null;
-	static final String url="jdbc:mysql://localhost:3306/collegedata";
+	static final String url="jdbc:mysql://localhost:3306/erp";
 	static final String uname="root";
 	static final String password="root";
 	
@@ -23,6 +23,7 @@ public class DataBaseConnection {
 				
 				Class.forName("com.mysql.jdbc.Driver");
 				con=DriverManager.getConnection(url,uname,password);
+				System.out.print("DataBase Connected");
 				return con;
 			}
 			catch(Exception exp)
@@ -40,6 +41,7 @@ public class DataBaseConnection {
 			
 			Class.forName("com.mysql.jdbc.Driver");
 			con=DriverManager.getConnection(url,uname,password);
+			System.out.print("DataBase Connected");
 			return true;
 		}
 		catch(Exception exp)
