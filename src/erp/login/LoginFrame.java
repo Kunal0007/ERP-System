@@ -5,28 +5,20 @@ import java.sql.*;
 import java.awt.Color;
 
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
-import java.awt.FlowLayout;
-import java.awt.Image;
-import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
 
 import javax.swing.*;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 
-import javax.imageio.ImageIO;
+
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
-import javax.swing.Timer;
 import javax.swing.border.LineBorder;
-import javax.swing.border.MatteBorder;
 
 import erp.admin.Admin;
 import erp.database.DataBaseConnection;
@@ -34,8 +26,6 @@ import erp.student.Student;
 
 import java.awt.Font;
 import java.awt.HeadlessException;
-import java.awt.SystemColor;
-import java.awt.Canvas;
 import java.awt.Cursor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -61,6 +51,7 @@ public class LoginFrame extends JFrame  {
 	private JLabel lblNewLabel_6;
 	private JLabel lblNewLabel_2;
 	private JLabel lblNewLabel_4;
+	static LoginFrame frame;
 	
 
 	/**
@@ -71,7 +62,7 @@ public class LoginFrame extends JFrame  {
 			public void run() {
 				try {
 					if(DataBaseConnection.checkconnection()) {
-						LoginFrame frame = new LoginFrame();
+						frame = new LoginFrame();
 						frame.setVisible(true);
 					}
 					else
@@ -239,6 +230,7 @@ public class LoginFrame extends JFrame  {
 						    Admin admin = new Admin(rs.getString(1));   
 						    //make page visible to the user  
 						    admin.setVisible(true);  
+						    frame.dispose();
 						      
 						    //create a welcome label and set it to the new page  
 				            JLabel wel_label = new JLabel("Welcome: "+rs.getString(1));  
@@ -267,7 +259,8 @@ public class LoginFrame extends JFrame  {
 						    Student student = new Student(rs.getString(1), rs.getString(2));   
 						    //make page visible to the user  
 						    student.setVisible(true);  
-						      
+						    frame.dispose();
+						    
 						    //create a welcome label and set it to the new page  
 				            JLabel wel_label = new JLabel("Welcome: "+rs.getString(1));  
 				            student.getContentPane().add(wel_label); 
