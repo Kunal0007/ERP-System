@@ -88,27 +88,32 @@ public class StudentData {
 	
 	Connection con = DataBaseConnection.getConnection();
 
-	public void getStudentDetails(String rollnumber)
+	public boolean getStudentDetails(String rollnumber)
 	{
 		
 		String query="Select * from student where Roll_No = '" + rollnumber + "'";
 		try
 		{
+//			PreparedStatement pStatement1 = con.prepareStatement(query);
 			Statement st=con.createStatement();
 			ResultSet rs=st.executeQuery(query);
-			rs.next();
-			
-			setName(rs.getString(2));
-			setCourse(rs.getString(3));
-			setRollNumber(rs.getString(4));
-			setDOB(rs.getString(5));
-			setContact(rs.getString(6));
-			setEmail(rs.getString(7));
+			if(rs.next()) {
+				setName(rs.getString(2));
+				setCourse(rs.getString(3));
+				setRollNumber(rs.getString(4));
+				setDOB(rs.getString(5));
+				setContact(rs.getString(6));
+				setEmail(rs.getString(7));
+				System.out.print("Hello");
+				return true;
+			}
+			return false;
 		}
-		
 		catch(Exception e)
 		{
+			System.out.print("Error");
 			e.printStackTrace();
+			return false;
 		}
 		
 	}
@@ -129,7 +134,11 @@ public class StudentData {
 			pStatement1.setString(7, generateUserId());
 			pStatement1.setString(8, generatePassword());
 			
-			pStatement1.execute();
+			int rowInserted = pStatement1.executeUpdate();
+			if(rowInserted > 0) {
+				return true;
+			}
+			return false;
 			
 		}
 		catch(Exception e)
@@ -137,7 +146,6 @@ public class StudentData {
 			e.printStackTrace();
 			return false;
 		}
-		return true;
 	}
 	
 	public boolean updateStudentDetails(String rollno)
@@ -156,7 +164,11 @@ public class StudentData {
 			pStatement1.setString(7, generateUserId());
 			pStatement1.setString(8, generatePassword());
 			
-			pStatement1.execute();
+			int rowUpdated = pStatement1.executeUpdate();
+			if(rowUpdated > 0) {
+				return true;
+			}
+			return false;
 			
 		}
 		catch(Exception e)
@@ -164,7 +176,6 @@ public class StudentData {
 			e.printStackTrace();
 			return false;
 		}
-		return true;
 	}
 	
 	public boolean deleteStudentDetails(String rollno)
@@ -173,15 +184,17 @@ public class StudentData {
 		try
 		{
 			PreparedStatement pStatement1 = con.prepareStatement(query1);
-			pStatement1.execute();
-			
+			int rowDeleted = pStatement1.executeUpdate();
+			if(rowDeleted > 0) {
+				return true;
+			}
+			return false;
 		}
 		catch(Exception e)
 		{
 			e.printStackTrace();
 			return false;
 		}
-		return true;
 	}
 	
 }
