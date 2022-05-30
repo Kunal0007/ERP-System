@@ -66,7 +66,11 @@ public class Course {
 		try
 		{
 			PreparedStatement pStatement1 = con.prepareStatement(query1);
-			pStatement1.execute();
+			int rowDeleted = pStatement1.executeUpdate();
+			if(rowDeleted > 0) {
+				return true;
+			}
+			return false;
 			
 		}
 		catch(Exception e)
@@ -74,7 +78,6 @@ public class Course {
 			e.printStackTrace();
 			return false;
 		}
-		return true;
 	}
 	
 }
