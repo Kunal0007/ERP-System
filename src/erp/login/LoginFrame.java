@@ -34,7 +34,6 @@ import java.awt.event.ActionListener;
 public class LoginFrame extends JFrame  {
 
 	private JPanel contentPane;
-	private JTextField txtErpPortal;
 	private JPanel panel;
 	private JLabel lblNewLabel;
 	private JButton btnNewButton;
@@ -98,15 +97,12 @@ public class LoginFrame extends JFrame  {
 		contentPane.add(panel_1);
 		panel_1.setLayout(null);
 		
-		txtErpPortal = new JTextField();
-		txtErpPortal.setHorizontalAlignment(SwingConstants.CENTER);
-		txtErpPortal.setForeground(new Color(255, 255, 255));
-		txtErpPortal.setFont(new Font("Poppins ExtraBold", Font.BOLD, 40));
-		txtErpPortal.setText("ERP PORTAL");
-		txtErpPortal.setBounds(317, 11, 401, 79);
-		txtErpPortal.setBackground(new Color(0, 139, 139, 220));
-		panel_1.add(txtErpPortal);
-		txtErpPortal.setColumns(10);
+		JLabel lblNewLabel_7 = new JLabel("ERP SYSTEM");
+		lblNewLabel_7.setForeground(Color.WHITE);
+		lblNewLabel_7.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_7.setFont(new Font("Poppins ExtraBold", Font.PLAIN, 40));
+		lblNewLabel_7.setBounds(329, 11, 374, 79);
+		panel_1.add(lblNewLabel_7);
 		
 		panel = new JPanel();
 		panel.setBackground(new Color(0, 0, 0, 80));
@@ -323,5 +319,4 @@ public class LoginFrame extends JFrame  {
 		
 		return null;
 	}
-	
 }
