@@ -534,7 +534,11 @@ public class Admin extends JFrame {
 					panel_5.repaint();
 				}
 				else {
-					JOptionPane.showMessageDialog(null, "Internal Error");
+					JOptionPane.showMessageDialog(null, "Student Not Found");
+					cleartextField();
+					panel_8.invalidate();
+					panel_8.validate();
+					panel_8.repaint();
 				}
 			}
 		});
@@ -568,7 +572,11 @@ public class Admin extends JFrame {
 					panel_4.repaint();
 				}
 				else {
-					JOptionPane.showMessageDialog(null, "Internal Error");
+					JOptionPane.showMessageDialog(null, "Course Not Found");
+					cleartextField();
+					panel_8.invalidate();
+					panel_8.validate();
+					panel_8.repaint();
 				}
 			}
 		});
@@ -579,74 +587,83 @@ public class Admin extends JFrame {
 				panel_8.removeAll();
 				
 				StudentData s = new StudentData();
-				s.getStudentDetails(textField_13.getText());
+				if(s.getStudentDetails(textField_13.getText())) {
+					
 				
-				JLabel lblNewLabel_8 = new JLabel("Name  : ");
-				lblNewLabel_8.setFont(new Font("Dialog", Font.PLAIN, 20));
-				lblNewLabel_8.setBounds(238, 54, 101, 31);
-				panel_8.add(lblNewLabel_8);
-				
-				JLabel lblNewLabel_8_1 = new JLabel("Course. :  ");
-				lblNewLabel_8_1.setFont(new Font("Dialog", Font.PLAIN, 20));
-				lblNewLabel_8_1.setBounds(225, 91, 93, 30);
-				panel_8.add(lblNewLabel_8_1);
-				
-				JLabel lblNewLabel_8_2 = new JLabel("Roll No.  :  ");
-				lblNewLabel_8_2.setFont(new Font("Dialog", Font.PLAIN, 20));
-				lblNewLabel_8_2.setBounds(219, 131, 106, 31);
-				panel_8.add(lblNewLabel_8_2);
-				
-				JLabel lblNewLabel_8_3 = new JLabel("Date of Birth  :  ");
-				lblNewLabel_8_3.setFont(new Font("Dialog", Font.PLAIN, 20));
-				lblNewLabel_8_3.setBounds(177, 172, 148, 31);
-				panel_8.add(lblNewLabel_8_3);
-				
-				JLabel lblNewLabel_8_4 = new JLabel("Phone No. :  ");
-				lblNewLabel_8_4.setFont(new Font("Dialog", Font.PLAIN, 20));
-				lblNewLabel_8_4.setBounds(204, 213, 124, 31);
-				panel_8.add(lblNewLabel_8_4);
-				
-				JLabel lblNewLabel_8_5 = new JLabel("Email Id :  ");
-				lblNewLabel_8_5.setFont(new Font("Dialog", Font.PLAIN, 20));
-				lblNewLabel_8_5.setBounds(225, 254, 101, 31);
-				panel_8.add(lblNewLabel_8_5);
-				
-				
-				JLabel lblNewLabel_8_6 = new JLabel(s.getName());
-				lblNewLabel_8_6.setFont(new Font("Dialog", Font.PLAIN, 20));
-				lblNewLabel_8_6.setBounds(360, 54, 129, 31);
-				panel_8.add(lblNewLabel_8_6);
-				
-				JLabel lblNewLabel_8_1_1 = new JLabel(s.getCourse());
-				lblNewLabel_8_1_1.setFont(new Font("Dialog", Font.PLAIN, 20));
-				lblNewLabel_8_1_1.setBounds(360, 91, 142, 30);
-				panel_8.add(lblNewLabel_8_1_1);
-				
-				JLabel lblNewLabel_8_2_1 = new JLabel(s.getRollNumber());
-				lblNewLabel_8_2_1.setFont(new Font("Dialog", Font.PLAIN, 20));
-				lblNewLabel_8_2_1.setBounds(360, 131, 142, 31);
-				panel_8.add(lblNewLabel_8_2_1);
-				
-				JLabel lblNewLabel_8_3_1 = new JLabel(s.getDOB());
-				lblNewLabel_8_3_1.setFont(new Font("Dialog", Font.PLAIN, 20));
-				lblNewLabel_8_3_1.setBounds(360, 172, 129, 31);
-				panel_8.add(lblNewLabel_8_3_1);
-				
-				
-				JLabel lblNewLabel_8_4_1 = new JLabel(s.getContact());
-				lblNewLabel_8_4_1.setFont(new Font("Dialog", Font.PLAIN, 20));
-				lblNewLabel_8_4_1.setBounds(360, 213, 129, 31);
-				panel_8.add(lblNewLabel_8_4_1);
-				
-				JLabel lblNewLabel_8_5_1 = new JLabel(s.getEmail());
-				lblNewLabel_8_5_1.setFont(new Font("Dialog", Font.PLAIN, 20));
-				lblNewLabel_8_5_1.setBounds(360, 254, 168, 31);
-				panel_8.add(lblNewLabel_8_5_1);
-				
-				cleartextField();
-				panel_8.invalidate();
-				panel_8.validate();
-				panel_8.repaint();
+					JLabel lblNewLabel_8 = new JLabel("Name  : ");
+					lblNewLabel_8.setFont(new Font("Dialog", Font.PLAIN, 20));
+					lblNewLabel_8.setBounds(238, 54, 101, 31);
+					panel_8.add(lblNewLabel_8);
+					
+					JLabel lblNewLabel_8_1 = new JLabel("Course. :  ");
+					lblNewLabel_8_1.setFont(new Font("Dialog", Font.PLAIN, 20));
+					lblNewLabel_8_1.setBounds(225, 91, 93, 30);
+					panel_8.add(lblNewLabel_8_1);
+					
+					JLabel lblNewLabel_8_2 = new JLabel("Roll No.  :  ");
+					lblNewLabel_8_2.setFont(new Font("Dialog", Font.PLAIN, 20));
+					lblNewLabel_8_2.setBounds(219, 131, 106, 31);
+					panel_8.add(lblNewLabel_8_2);
+					
+					JLabel lblNewLabel_8_3 = new JLabel("Date of Birth  :  ");
+					lblNewLabel_8_3.setFont(new Font("Dialog", Font.PLAIN, 20));
+					lblNewLabel_8_3.setBounds(177, 172, 148, 31);
+					panel_8.add(lblNewLabel_8_3);
+					
+					JLabel lblNewLabel_8_4 = new JLabel("Phone No. :  ");
+					lblNewLabel_8_4.setFont(new Font("Dialog", Font.PLAIN, 20));
+					lblNewLabel_8_4.setBounds(204, 213, 124, 31);
+					panel_8.add(lblNewLabel_8_4);
+					
+					JLabel lblNewLabel_8_5 = new JLabel("Email Id :  ");
+					lblNewLabel_8_5.setFont(new Font("Dialog", Font.PLAIN, 20));
+					lblNewLabel_8_5.setBounds(225, 254, 101, 31);
+					panel_8.add(lblNewLabel_8_5);
+					
+					
+					JLabel lblNewLabel_8_6 = new JLabel(s.getName());
+					lblNewLabel_8_6.setFont(new Font("Dialog", Font.PLAIN, 20));
+					lblNewLabel_8_6.setBounds(360, 54, 129, 31);
+					panel_8.add(lblNewLabel_8_6);
+					
+					JLabel lblNewLabel_8_1_1 = new JLabel(s.getCourse());
+					lblNewLabel_8_1_1.setFont(new Font("Dialog", Font.PLAIN, 20));
+					lblNewLabel_8_1_1.setBounds(360, 91, 142, 30);
+					panel_8.add(lblNewLabel_8_1_1);
+					
+					JLabel lblNewLabel_8_2_1 = new JLabel(s.getRollNumber());
+					lblNewLabel_8_2_1.setFont(new Font("Dialog", Font.PLAIN, 20));
+					lblNewLabel_8_2_1.setBounds(360, 131, 142, 31);
+					panel_8.add(lblNewLabel_8_2_1);
+					
+					JLabel lblNewLabel_8_3_1 = new JLabel(s.getDOB());
+					lblNewLabel_8_3_1.setFont(new Font("Dialog", Font.PLAIN, 20));
+					lblNewLabel_8_3_1.setBounds(360, 172, 129, 31);
+					panel_8.add(lblNewLabel_8_3_1);
+					
+					
+					JLabel lblNewLabel_8_4_1 = new JLabel(s.getContact());
+					lblNewLabel_8_4_1.setFont(new Font("Dialog", Font.PLAIN, 20));
+					lblNewLabel_8_4_1.setBounds(360, 213, 129, 31);
+					panel_8.add(lblNewLabel_8_4_1);
+					
+					JLabel lblNewLabel_8_5_1 = new JLabel(s.getEmail());
+					lblNewLabel_8_5_1.setFont(new Font("Dialog", Font.PLAIN, 20));
+					lblNewLabel_8_5_1.setBounds(360, 254, 168, 31);
+					panel_8.add(lblNewLabel_8_5_1);
+					
+					cleartextField();
+					panel_8.invalidate();
+					panel_8.validate();
+					panel_8.repaint();
+				}
+				else {
+					JOptionPane.showMessageDialog(null, "Student Not Found");
+					cleartextField();
+					panel_8.invalidate();
+					panel_8.validate();
+					panel_8.repaint();
+				}
 			}
 		});
 	}
@@ -833,6 +850,7 @@ public class Admin extends JFrame {
 		textField_1.setText(null);
 		textField_2.setText(null);
 		textField_2.setText(null);
+		textField_3.setText(null);
 		textField_4.setText(null);
 		textField_5.setText(null);
 		textField_6.setText(null);
