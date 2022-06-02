@@ -9,6 +9,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
 import erp.database.DataBaseConnection;
+import erp.login.LoginFrame;
 import erp.student.StudentData;
 
 import java.awt.Color;
@@ -26,6 +27,9 @@ import java.sql.Statement;
 import java.awt.event.ActionEvent;
 import java.awt.CardLayout;
 import javax.swing.JTable;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.io.IOException;
 
 @SuppressWarnings("serial")
 public class Admin extends JFrame {
@@ -71,6 +75,7 @@ public class Admin extends JFrame {
 	DefaultTableModel model3 = new DefaultTableModel(columnNames3, 0);
 	Connection con = DataBaseConnection.getConnection();
 	private JTextField textField_2;
+	static Admin frame;
 	
 
 	/**
@@ -81,7 +86,7 @@ public class Admin extends JFrame {
 			public void run() {
 				try {
 					if(DataBaseConnection.checkconnection()) {
-						Admin frame = new Admin(null);
+						frame = new Admin(null);
 						frame.setVisible(true);
 					}
 					else
@@ -666,6 +671,7 @@ public class Admin extends JFrame {
 				}
 			}
 		});
+		
 	}
 
 	protected boolean addStudent() {
