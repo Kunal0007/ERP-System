@@ -235,6 +235,7 @@ public class LoginFrame extends JFrame  {
 						else
 						{
 						    JOptionPane.showMessageDialog(null, "Incorrect user-id or password..Try Again with correct detail");
+						    clearfields();
 						}
 					} catch (HeadlessException | SQLException e1) {
 						// TODO Auto-generated catch block
@@ -264,6 +265,7 @@ public class LoginFrame extends JFrame  {
 						else
 						{
 						    JOptionPane.showMessageDialog(null, "Incorrect user-id or password..Try Again with correct detail");
+						    clearfields();
 						}
 					} catch (HeadlessException | SQLException e1) {
 						// TODO Auto-generated catch block
@@ -318,5 +320,12 @@ public class LoginFrame extends JFrame  {
 		}
 		
 		return null;
+	}
+	
+	public void clearfields() {
+		textField.setText(null);
+		passwordField.setText(null);
+		textField_1.setText(null);
+		passwordField_1.setText(null);
 	}
 }
