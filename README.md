@@ -13,3 +13,6 @@ ERP systems can lead to error-free, secure, reliable, and fast management system
 
 ## ScreenShots
 ![image](https://user-images.githubusercontent.com/73381050/171994372-e817b1e9-391f-481c-b9b8-cb3fb3d84ac8.png)
+
+
+![image](https://user-images.githubusercontent.com/73381050/172060051-a26a5828-d317-4563-8303-d526bd8b6220.png)
