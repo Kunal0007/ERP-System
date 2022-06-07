@@ -22,3 +22,7 @@ The application is reduced to avoid errors while entering the data. The system c
 
 
 ![image](https://user-images.githubusercontent.com/73381050/172060051-a26a5828-d317-4563-8303-d526bd8b6220.png)
+
+
+![image](https://user-images.githubusercontent.com/73381050/172361483-430354ab-fb93-4551-b764-4cdd44e30298.png)
+
