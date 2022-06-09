@@ -31,3 +31,6 @@ The application is reduced to avoid errors while entering the data. The system c
 ![image](https://user-images.githubusercontent.com/73381050/172686421-1d8f11a5-94cc-4a67-8b6c-83c9b2781df9.png)
 
 
+
+# SCOPE
+Enterprise resource planning (ERP) for education is something that is indulged with power BI analytics tools that help in generating important reports for managing all the academic and administrative operations of an institution like admission & enrollment, student attendance, academic performance, compliance management and much more. It enables institutions to make data-driven decisions that can lead to the growth and success of the institution.
